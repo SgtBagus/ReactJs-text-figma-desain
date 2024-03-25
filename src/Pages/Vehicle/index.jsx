@@ -3,6 +3,9 @@ import { useContext, useEffect } from "react";
 import { LoadingContext } from "../../Context/LoadingContext";
 import { ButtonContext } from "../../Context/ButtonContext";
 
+
+import Card from "./Components/Card";
+
 const Vehicle = () => {
     const { dispatchLoading } = useContext(LoadingContext);
     const { dispatch } = useContext(ButtonContext);
@@ -16,15 +19,24 @@ const Vehicle = () => {
     }, [dispatch, dispatchLoading]);
 
     return (
-        <div className="container" style={{ marginTop: "120px" }}>
-            <div className="row justify-content-center">
-                <div className="col-md-4">
-                    <div className="card border-0 rounded shadow-sm">
-                        <div className="card-body">
-                            HALAMAN Vehicle
-                        </div>
-                    </div>
-                </div>
+        <div className="row">
+            <div className="col-md-6">
+                <Card />
+            </div>
+            <div className="col-md-6">
+                <Card />
+            </div>
+            <div className="col-md-6">
+                <Card />
+            </div>
+            <div className="col-md-6">
+                <Card />
+            </div>
+            <div className="col-md-6">
+                <Card />
+            </div>
+            <div className="col-md-6">
+                <Card />
             </div>
         </div>
     )

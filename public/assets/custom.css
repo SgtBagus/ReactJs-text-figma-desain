@@ -22,7 +22,6 @@ a:hover {
     opacity: .7 !important;
 }
 
-
 .error {
     width: 100%;
     margin-top: 0.25rem;
@@ -69,6 +68,11 @@ a:hover {
 
 .sidebar-white {
     background-color: #fff !important;
+}
+
+.content {
+    overflow: auto !important;
+    max-height: 80vh !important;
 }
 
 

@@ -9,15 +9,14 @@ import { HeaderPageComponent } from "./Components/HeaderPageComponent";
 import { ButtonContextProvider } from "../Context/ButtonContext";
 
 import './custom.css';
-
 export const LayoutDefault = ({ children, pageName, path }) => (
   <>
     <HeaderComponents />
     <SidebarComponents path={path} />
     <div className="content-wrapper">
       <ButtonContextProvider>
-        <HeaderPageComponent pageName={pageName} />
-        <section className="content">
+        <HeaderPageComponent />
+        <section className="content m-3">
           <div className="container-fluid">{children}</div>
         </section>
       </ButtonContextProvider>

@@ -1,0 +1,25 @@
+.card-header-custom {
+    border-radius: 5px 5px 0 0 !important;
+    width: max-content;
+    padding: 7px 25px;
+}
+
+.card-body-custom {
+    border-radius: 0 0 5px 5px !important;
+}
+
+.speed-box {
+    background-image: url('./assets/ellipse.png');
+    background-size:contain;
+    background-repeat:no-repeat;
+
+    object-fit: cover;
+    width: 125px;
+    height: 65px;
+}
+
+.speed-box > .speed-text {
+    position: relative;
+    top: 30px;
+    left: 10px;
+}
