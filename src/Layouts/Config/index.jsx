@@ -22,3 +22,18 @@ export const MENU_LIST = [
         imageIcon: Vehicle,
     },
 ];
+
+export const MENU_LIST_FOOTER = [
+    {
+        id: 1,
+        menuName: 'Settings',
+        path: '/setting',
+        imageIcon: Dashboard,
+    },
+    {
+        id: 2,
+        menuName: 'Logout',
+        path: '/logout',
+        imageIcon: Job,
+    },
+]

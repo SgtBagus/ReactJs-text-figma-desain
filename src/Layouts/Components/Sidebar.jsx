@@ -5,11 +5,9 @@ import axios from 'axios';
 
 import { AuthContext } from "../../Context/AuthContext";
 
-import Button from '../../Components/Button';
-
 import { API_BASE } from '../../Data/config/apiBase';
 
-import { MENU_LIST } from '../Config';
+import { MENU_LIST, MENU_LIST_FOOTER } from '../Config';
 
 export const SidebarComponents = ({ path: currentPath }) => {
     const { currentUser: { token } } = useContext(AuthContext);
@@ -47,7 +45,8 @@ export const SidebarComponents = ({ path: currentPath }) => {
             </div>
 
             <div className="sidebar">
-                <nav className="mt-2">
+                <nav
+                    className="my-2 d-flex flex-column justify-content-between" style={{ height: '85vh'}}>
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
                         {
                             MENU_LIST.map(({id, menuName, path, icon, imageIcon }) => (
@@ -63,23 +62,21 @@ export const SidebarComponents = ({ path: currentPath }) => {
                                 </li>
                             ))
                         }
-                        <li className="nav-item">
-                            <Button                                         
-                                className="btn btn-danger btn-block my-2" 
-                                label="Logout"
-                                onClick={() => logoutHanlder()}
-                                buttonIcon="fas fa-sign-out-alt"
-                            />
-                        </li>
                     </ul>
-                    <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+                    <ul className="nav nav-pills nav-sidebar flex-column nav-menu-footer" data-widget="treeview" role="menu" data-accordion="true">
                         {
-                            MENU_LIST.map(({id, menuName, path, imageIcon }) => (
+                            MENU_LIST_FOOTER.map(({id, menuName, path, imageIcon }) => (
                                 <li className="nav-item" key={id}>
                                     <div
                                         className={`nav-link ${currentPath.toLowerCase() === path.toLowerCase() && 'active'}`}
                                         style={{ color: currentPath.toLowerCase() !== path.toLowerCase() && '#202224', cursor: 'pointer' }}
-                                        onClick={() => handelNavigate(path)}
+                                        onClick={() => {
+                                            if (path === '/logout') {
+                                                logoutHanlder()
+                                            } else {
+                                                handelNavigate(path)
+                                            }
+                                        }}
                                     >
                                         <img src={imageIcon} alt="iconMenu" className='mr-3' />
                                         <p>{menuName}</p>
