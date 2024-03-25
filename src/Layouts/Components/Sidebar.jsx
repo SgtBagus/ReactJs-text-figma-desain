@@ -3,6 +3,8 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import ICON from './assets/icon.png';
+
 import { AuthContext } from "../../Context/AuthContext";
 
 import { API_BASE } from '../../Data/config/apiBase';
@@ -30,18 +32,9 @@ export const SidebarComponents = ({ path: currentPath }) => {
 
     return (
         <aside className="main-sidebar sidebar-white">
-            <div className="brand-link text-center" style={{ height: '75px' }}>
-                <span
-                    className="font-primary fw-bold"
-                    style={{
-                    display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        height: '100%',
-                    }}
-                >
-                    GPS.ID TMS
-                </span>
+            <div class="brand-link d-flex align-items-center flex-row-reverse" style={{ height: '75px' }}>
+                <img src={ICON} alt="icon" className="brand-image" />
+                <span className="brand-text font-weight-light font-primary fw-bold w-100 text-center">GPS.ID TMS</span>
             </div>
 
             <div className="sidebar">
