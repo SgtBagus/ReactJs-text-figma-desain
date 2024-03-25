@@ -50,14 +50,14 @@ export const SidebarComponents = ({ path: currentPath }) => {
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
                         {
-                            MENU_LIST.map(({id, menuName, path, icon, role: roleMenu }) => (
+                            MENU_LIST.map(({id, menuName, path, icon, imageIcon }) => (
                                 <li className="nav-item" key={id}>
                                     <div
-                                        className={`nav-link ${currentPath === path && 'active'}`}
-                                        style={{ color: currentPath !== path && '#c2c7d0', cursor: 'pointer' }}
+                                        className={`nav-link ${currentPath.toLowerCase() === path.toLowerCase() && 'active'}`}
+                                        style={{ color: currentPath.toLowerCase() !== path.toLowerCase() && '#202224', cursor: 'pointer' }}
                                         onClick={() => handelNavigate(path)}
                                     >
-                                        <i className={icon}></i>
+                                        <img src={imageIcon} alt="iconMenu" className='mr-3' />
                                         <p>{menuName}</p>
                                     </div>
                                 </li>
@@ -71,6 +71,22 @@ export const SidebarComponents = ({ path: currentPath }) => {
                                 buttonIcon="fas fa-sign-out-alt"
                             />
                         </li>
+                    </ul>
+                    <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+                        {
+                            MENU_LIST.map(({id, menuName, path, imageIcon }) => (
+                                <li className="nav-item" key={id}>
+                                    <div
+                                        className={`nav-link ${currentPath.toLowerCase() === path.toLowerCase() && 'active'}`}
+                                        style={{ color: currentPath.toLowerCase() !== path.toLowerCase() && '#202224', cursor: 'pointer' }}
+                                        onClick={() => handelNavigate(path)}
+                                    >
+                                        <img src={imageIcon} alt="iconMenu" className='mr-3' />
+                                        <p>{menuName}</p>
+                                    </div>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </nav>
             </div>

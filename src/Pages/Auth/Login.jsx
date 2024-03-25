@@ -72,8 +72,8 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <div className="card border-0 rounded shadow-sm px-4 py-5">
+    <div className="container d-flex justify-content-center">
+      <div className="card border-0 rounded shadow-sm px-4 py-5 login-card">
         <div className="card-body">
           <div className="text-center">
             <h4 className="fw-bold">Login to <span className="font-primary">GPS.ID TMS </span>Account</h4>

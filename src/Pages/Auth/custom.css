@@ -20,3 +20,7 @@ body {
 .wrapper {
     min-height: unset !important;
 }
+
+.login-card {
+    width: 550px;
+}

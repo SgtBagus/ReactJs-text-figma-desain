@@ -70,3 +70,12 @@ a:hover {
 .sidebar-white {
     background-color: #fff !important;
 }
+
+
+.nav-sidebar> .nav-item > .nav-link{
+    padding: 15px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #43A6EE !important;
+}

@@ -42,11 +42,11 @@ export const HeaderComponents = () => {
                     />
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto mr-3 d-flex align-items-center">
-                <li class="nav-item">
-                    <button type="button" class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="far fa-bell" />
-                        <span class="badge badge-danger navbar-badge" style={{
+            <ul className="navbar-nav ml-auto mr-3 d-flex align-items-center">
+                <li className="nav-item">
+                    <button type="button" className="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i className="far fa-bell" />
+                        <span className="badge badge-danger navbar-badge" style={{
                             position: 'absolute',
                             right: '0',
                             top: '0',
@@ -55,13 +55,13 @@ export const HeaderComponents = () => {
                         }}>6</span>
                     </button>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <div className="mx-3">
                         <img src={ukFlag} alt="flag" className="mx-3"/>
                         English
                     </div>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <div className="user-panel d-flex align-items-center">
                         <div className="image">
                             <img src="https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg" className="img-circle elevation-2" alt="User" style={{ width: '35px', height: '35px', objectFit: 'cover' }} />

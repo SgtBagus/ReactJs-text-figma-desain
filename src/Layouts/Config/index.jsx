@@ -1,26 +1,24 @@
+import Dashboard from './assets/dashboard.png';
+import Job from './assets/job.png';
+import Vehicle from './assets/vehicle.png';
+
 export const MENU_LIST = [
     {
         id: 1,
         menuName: 'Dashboard',
         path: '/',
-        icon: 'nav-icon fas fa-tachometer-alt',
+        imageIcon: Dashboard,
     },
     {
         id: 2,
-        menuName: 'Manajemen Stock',
-        path: '/stock-management',
-        icon: 'nav-icon fas fa-list-alt',
+        menuName: 'Job',
+        path: '/job',
+        imageIcon: Job,
     },
     {
         id: 3,
-        menuName: 'Inventaris',
-        path: '/inventaris',
-        icon: 'nav-icon fas fa-archive',
-    },
-    {
-        id: 4,
-        menuName: 'Users',
-        path: '/users',
-        icon: 'nav-icon fas fa-users',
+        menuName: 'Vehicle Lists',
+        path: '/vehicle',
+        imageIcon: Vehicle,
     },
 ];

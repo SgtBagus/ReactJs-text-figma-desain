@@ -8,6 +8,7 @@ import { LayoutDefault } from "../Layouts";
 import Login from "../Pages/Auth/Login";
 
 import Dashboard from "../Pages/Dashboard";
+import Vehicle from "../Pages/Vehicle";
 
 const RoutesComponents = () => {
   const { currentUser, isLoading } = useContext(AuthContext);
@@ -35,6 +36,14 @@ const RoutesComponents = () => {
         element={
           <ProtectedRoute>
             {RenderDefaultLayout(<Dashboard />, "Dashboard", "/")}
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/vehicle"
+        element={
+          <ProtectedRoute>
+            {RenderDefaultLayout(<Vehicle />, "Vehicle", "/vehicle")}
           </ProtectedRoute>
         }
       />
