@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import update from "immutability-helper";
@@ -17,7 +16,7 @@ import "./custom.css";
 
 const Login = () => {
   const [form, setForm] = useState({
-    email: "",
+    username: "",
     password: "",
     rememberMe: true,
   });
@@ -26,7 +25,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { email, password, rememberMe } = form;
+  const { username, password, rememberMe } = form;
 
   useEffect(() => {
     if (localStorage.getItem("currentUser")) {
@@ -47,28 +46,24 @@ const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
 
-    const url = `${API_BASE}api/login`;
-    await axios
-      .post(url, form)
-      .then((res) => {
-        const {
-          data: {
-            user: { id, name, image, role, email },
-            token,
-          },
-        } = res;
-        const currentUser = { id, name, email, image, role, token };
+    const url = `${API_BASE}public/login`;
+    const payload = {
+      username,
+      password,
+    };
 
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
-        window.location.href = "/";
-      })
-      .catch((error) => {
-        NotificationManager.warning(
-          CATCH_ERROR(error),
-          "Terjadi Kesalahan",
-          5000
-        );
-      });
+    await axios.post(url, payload).then((res) => {
+      const {
+        data: {
+          message: { data: userData },
+        },
+      } = res;
+
+      localStorage.setItem("currentUser", JSON.stringify(userData));
+      window.location.href = "/";
+    }).catch((error) => {
+      NotificationManager.warning(CATCH_ERROR(error), "Terjadi Kesalahan", 5000);
+    });
   };
 
   return (
@@ -76,7 +71,9 @@ const Login = () => {
       <div className="card border-0 rounded shadow-sm px-4 py-5 login-card">
         <div className="card-body">
           <div className="text-center">
-            <h4 className="fw-bold">Login to <span className="font-primary">GPS.ID TMS </span>Account</h4>
+            <h4 className="fw-bold">
+              Login to <span className="font-primary">GPS.ID TMS </span>Account
+            </h4>
             <label>Please enter your email and password to continue</label>
           </div>
 
@@ -85,29 +82,37 @@ const Login = () => {
               <div className="my-3">
                 <label className="form-label fw-bold">Email address:</label>
                 <InputText
-                  type="email"
-                  value={email}
+                  type="text"
+                  value={username}
                   placeholder="Masukkan Alamat Email"
-                  changeEvent={(val, e) => changeInputHandler("email", val, e)}
+                  changeEvent={(val, e) =>
+                    changeInputHandler("username", val, e)
+                  }
                 />
               </div>
               <div className="my-3">
                 <div className="d-flex justify-content-between">
                   <label className="form-label fw-bold p-0">Password:</label>
-                  <a href="#" className="form-label fw-light">Forget Password ?</a>
+                  <a href="forget" className="form-label fw-light">
+                    Forget Password ?
+                  </a>
                 </div>
                 <InputText
                   type="password"
                   value={password}
                   placeholder="Masukkan Password"
-                  changeEvent={(val, e) => changeInputHandler("password", val, e)}
+                  changeEvent={(val, e) =>
+                    changeInputHandler("password", val, e)
+                  }
                 />
                 <div className="my-2">
                   <InputCheckbox
                     id="rememberMe"
                     value={rememberMe}
                     name="rememberMe"
-                    changeEvent={(val, e) => changeInputHandler("rememberMe", val, e)}
+                    changeEvent={(val, e) =>
+                      changeInputHandler("rememberMe", val, e)
+                    }
                     title="Remember Password"
                   />
                 </div>
@@ -119,11 +124,7 @@ const Login = () => {
                 Sign In
               </button>
               <div>
-                Don't have an account ?
-                {' '}
-                <span>
-                  Create Account
-                </span>
+                Don't have an account ? <span>Create Account</span>
               </div>
             </div>
           </form>

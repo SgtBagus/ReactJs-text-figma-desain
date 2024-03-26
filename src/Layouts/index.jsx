@@ -8,7 +8,6 @@ import { HeaderPageComponent } from "./Components/HeaderPageComponent";
 
 import { ButtonContextProvider } from "../Context/ButtonContext";
 
-import './custom.css';
 export const LayoutDefault = ({ children, pageName, path }) => (
   <>
     <HeaderComponents />

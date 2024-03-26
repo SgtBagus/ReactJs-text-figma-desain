@@ -32,7 +32,7 @@ export const SidebarComponents = ({ path: currentPath }) => {
 
     return (
         <aside className="main-sidebar sidebar-white">
-            <div class="brand-link d-flex align-items-center flex-row-reverse" style={{ height: '75px' }}>
+            <div className="brand-link d-flex align-items-center flex-row-reverse" style={{ height: '75px' }}>
                 <img src={ICON} alt="icon" className="brand-image" />
                 <span className="brand-text font-weight-light font-primary fw-bold w-100 text-center">GPS.ID TMS</span>
             </div>

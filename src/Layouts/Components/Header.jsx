@@ -35,7 +35,6 @@ export const HeaderComponents = () => {
                         placeholder="&#xF002; Search"
                         changeEvent={(val, e) => changeInputHandler("search", val, e)}
                         style={{
-                            width: "400px",
                             borderRadius: "25px",
                             fontFamily: "Arial, FontAwesome",
                         }}

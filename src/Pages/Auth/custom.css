@@ -1,24 +1,11 @@
-
-html {
+.body-login {
+    background-color: unset !important;
+    
     background-image: url('./background.jpg');
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-body {
-    background-color: unset !important;
-    
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-}
-
-.wrapper {
-    min-height: unset !important;
 }
 
 .login-card {

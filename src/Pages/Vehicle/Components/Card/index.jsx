@@ -1,16 +1,58 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import ICON_STATUS from "./assets/icon-status.png";
 import TRUCK from "./assets/truck.png";
+import CAR from "./assets/car.png";
+import MOTORCYCLE from "./assets/motorcycle.png";
 
 import ENGINE from "./assets/engine.png";
 import SATELLITE from "./assets/satellite.png";
 import BATTERY from "./assets/battery.png";
 
 import "./custom.css";
+import moment from "moment";
 
-const Card = () => {
+const ACC_ENUM = {
+  ON: 'ON',
+  OFF: 'OFF',
+};
+
+const VEHICLE_EMUM = {
+  TRUCK: 'Truck',
+  CAR: 'Car',
+  MOTORCYCLE: 'Motorcycle',
+}
+
+const getStatus = (accStatus, speed) =>{
+  let statusReturn = 'Error';
+
+  if (accStatus === ACC_ENUM.ON && parseInt(speed) > 0 ) {
+    statusReturn = 'Running';
+  } else if (accStatus === ACC_ENUM.OFF && parseInt(speed) === 0 ) {
+    statusReturn = 'Parking';
+  } else if (accStatus === ACC_ENUM.ON && parseInt(speed) === 0 ) {
+    statusReturn = 'Stop'
+  }
+
+  return statusReturn;
+}
+
+const getIconVehicle = (val) => {
+  let iconRender = TRUCK;
+
+  if (val === VEHICLE_EMUM.CAR) {
+    iconRender = CAR; 
+  } else if (val === VEHICLE_EMUM.MOTORCYCLE) {
+    iconRender = MOTORCYCLE;
+  }
+
+  return iconRender;
+}
+
+const Card = ({
+  accStatus, plateNumber, expiredGsm, speed, gsmNo, satellite, battery,
+  vehicleType, imei, deviceName, lastUpdate,
+}) => {
   return (
     <div className="card-custom-continer">
       <div className="card card-header-custom border-0 border-bottom shadow-sm m-0 d-flex flex-row">
@@ -26,7 +68,7 @@ const Card = () => {
             className="form-label fw-bold m-0"
             style={{ color: "#1A1A1A" }}
           >
-            Dispatch
+            {getStatus(accStatus, speed)}
           </label>
         </div>
       </div>
@@ -39,7 +81,7 @@ const Card = () => {
                   className="form-label fw-bold mr-2 my-0"
                   style={{ color: "#1A1A1A" }}
                 >
-                  40km/h
+                  {speed}km/h
                 </label>
                 <label
                   className="form-label fw-light mr-2 my-0"
@@ -52,7 +94,7 @@ const Card = () => {
             <div className="w-100">
               <div className="speed-text d-flex flex-row align-items-center">
                 <img
-                  src={TRUCK}
+                  src={getIconVehicle(vehicleType)}
                   alt="icon"
                   className="mr-2"
                   style={{
@@ -72,14 +114,14 @@ const Card = () => {
                       className="form-label fw-normal ms-2 my-0"
                       style={{ color: "#1A1A1A" }}
                     >
-                      35ACB95238
+                      {imei ? imei : 'Error'}
                     </label>
                   </label>
                   <label
                     className="form-label fw-bold mr-2 my-0"
                     style={{ color: "#1A1A1A", fontSize: "16px" }}
                   >
-                    B 1234 QWE - TRUCK 0001
+                    {plateNumber} - {vehicleType ? vehicleType.toUpperCase() : 'TRUCK'} {deviceName}
                   </label>
                 </div>
               </div>
@@ -101,7 +143,7 @@ const Card = () => {
                 className="form-label fw-bold mr-2 my-0"
                 style={{ color: "#1A1A1A", fontSize: "16px" }}
               >
-                ACC ON
+                ACC {accStatus}
               </label>
             </div>
             <div>
@@ -118,7 +160,9 @@ const Card = () => {
                 className="form-label fw-bold mr-2 my-0"
                 style={{ color: "#1A1A1A", fontSize: "16px" }}
               >
-                N/A
+                {
+                  !satellite ? 'N/A' : satellite
+                }
               </label>
             </div>
             <div>
@@ -135,7 +179,7 @@ const Card = () => {
                 className="form-label fw-bold mr-2 my-0"
                 style={{ color: "#1A1A1A", fontSize: "16px" }}
               >
-                100%
+                {battery}%  
               </label>
             </div>
           </div>
@@ -150,8 +194,7 @@ const Card = () => {
                   className="form-label fw-normal ml-1 my-0"
                   style={{ color: "#7A7A7A" }}
                 >
-                  {' '}
-                  31-12-2022 16:00:00
+                  {moment(lastUpdate).format('DD-MM-YYYY HH:mm:ss')}
                 </label>
               </label>
             </div>
@@ -165,8 +208,7 @@ const Card = () => {
                   className="form-label fw-normal ml-1 my-0"
                   style={{ color: "#7A7A7A" }}
                 >
-                  {' '}
-                  081987654321
+                  {gsmNo}
                 </label>
               </label>
             </div>
@@ -180,8 +222,7 @@ const Card = () => {
                   className="form-label fw-normal ml-1 my-0"
                   style={{ color: "#7A7A7A" }}
                 >
-                  {' '}
-                  31-12-2023
+                  {moment(expiredGsm).format('DD-MM-YYYY')}
                 </label>
               </label>
             </div>

@@ -17,7 +17,7 @@ const Dashboard = () => {
     }, [dispatch, dispatchLoading]);
 
     return (
-        <div className="container" style={{ marginTop: "120px" }}>
+        <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-4">
                     <div className="card border-0 rounded shadow-sm">

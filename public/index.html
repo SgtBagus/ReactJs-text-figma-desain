@@ -25,7 +25,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
   </head>
   <body class="hold-transition sidebar-mini" id="bodyDocument">
-    <div class="wrapper">
+    <div class="wrapper" id="divDocumentWrapper">
       <div id="root"></div>
       <div id='modals'> </div>
 
@@ -56,9 +56,23 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
   <script>
-     $(document).on('click', '#clickerMenu', function() {
-      const elementMenu = document.getElementById('bodyDocument');
+    const elementMenu = document.getElementById('bodyDocument');
+    const elementWrapperMenu = document.getElementById('divDocumentWrapper');
+    
 
+    $(window).on("load", function() {
+      var loc = window.location.pathname;
+
+      if (loc === '/login') {
+        $(elementMenu).removeClass("sidebar-mini").addClass("login-page body-login");
+        $(elementWrapperMenu).removeClass('wrapper').addClass('login');
+      } else {
+        $(elementMenu).removeClass("login-page body-login").addClass("sidebar-mini");
+        $(elementWrapperMenu).removeClass('login').addClass('wrapper');
+      }
+    });
+    
+     $(document).on('click', '#clickerMenu', function() {
       if($(elementMenu).hasClass('sidebar-collapse')){
         $(elementMenu).removeClass("sidebar-collapse");
       } else {
